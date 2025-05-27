@@ -1,16 +1,26 @@
-import './estilo.css'//IMPORTAÇÃO ARQUIVO estilo.css DA MESMA PASTA
 import logo from '../../imagens/logo.svg' //IMPORTAÇÃO IMAGEM logo.svg PARA VARIÁVEL logo
+import styled from 'styled-components'
+
+//CONTAINER PARA DIV
+const LogoContainer = styled.div`
+    display: flex;
+    font-size: 30px;
+`
+
+//CONTAINER PARA IMAGEM
+const LogoImage = styled.img`
+    margin-right: 10px;
+`
 
 function Logo() {
     return(
-         <div className='logo'>
-            <img 
+         <LogoContainer>
+            <LogoImage 
             src={logo} 
             alt='logo alura books' 
-            className='logo-img'
-            ></img>
+            />
             <p><strong>Alura</strong>Books</p>
-        </div>
+        </LogoContainer>
     )
 }
 
