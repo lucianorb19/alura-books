@@ -25,11 +25,30 @@ const SubTitulo = styled.h3`
     margin-bottom: 40px;
 `;
 
+const Resultado = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    p{
+        width: 200px;
+    }
+
+    img{
+        width: 100px;
+    }
+
+    &:hover {
+        border: 1px solid white;
+    }
+`;
+
 function Pesquisa(){
     const [livrosPesquisados, setLivrosPesquisados]= useState([]);
     var textoDigitado = '';
 
-    console.log(livrosPesquisados);
 
     return(
         <PesquisaContainer>
@@ -44,7 +63,13 @@ function Pesquisa(){
                     setLivrosPesquisados(resultadoPesquisa);
                 }}
             />
-            <p>{textoDigitado}</p>
+            
+            {livrosPesquisados.map( livro =>
+                <Resultado>
+                    <img src = {livro.src} />
+                     <p>{livro.nome}</p>
+                </Resultado>
+            )}
         </PesquisaContainer>
         
     )
@@ -67,7 +92,21 @@ onBlur={evento => setTextoDigitado(evento.target.value)} - DEFINE A VARIÁVEL te
 SENDO O QUE TIVER SIDO DIGITADO NO CAMPO DE PESQUISA (QUE É O evento.target.value PARA A FUNÇÃO
 onBlur)
 
+onBlur={evento => {
+                    textoDigitado = evento.target.value;
+                    const resultadoPesquisa = livros.filter( livro => 
+                        livro.nome.includes(textoDigitado));
+                    setLivrosPesquisados(resultadoPesquisa);
+                }}
+FILTRA PARA A CONSTANTE resultadoPesquisa, SOMENTE OS LIVROS CUJO NOME INCLUDA O QUE FOR PESQUISADO E DEPOIS DEFINE livrosPesquisados COM O MESMO VALOR DE resultadoPesquisa, OU SEJA, A LISTA COM LIVROS QUE CONTENHAM NO SEU NOME O QUE FOR PESQUISADO.
 
+{livrosPesquisados.map( livro =>
+                <Resultado>
+                    <img src = {livro.src} />
+                     <p>{livro.nome}</p>
+                </Resultado>
+            )}
+PARA CADA LIVRO DA LISTA RESULTANTE, MOSTRAR SUA IMAGEM E SEU NOME AO LADO
 
 
 
