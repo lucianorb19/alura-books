@@ -49,6 +49,15 @@ function Pesquisa(){
     const [livrosPesquisados, setLivrosPesquisados]= useState([]);
     var textoDigitado = '';
 
+    //FUNÇÃO QUE FILTRA OS LIVROS PELO NOME DO CAMPO PESQUISA E 
+    //DEFINE A VARIÁVEL resultadoPesquisa COM OS LIVROS CORRESPONDENTES
+    //TUDO ISSO NO EVENTO DE onBlur
+    function fazPesquisa(evento){
+        textoDigitado = evento.target.value;
+        const resultadoPesquisa = livros.filter( livro => livro.nome.includes(textoDigitado));
+        setLivrosPesquisados(resultadoPesquisa);
+    }
+
 
     return(
         <PesquisaContainer>
@@ -56,12 +65,7 @@ function Pesquisa(){
             <SubTitulo>Encontre seu livro em nossa estante.</SubTitulo>
             <Input 
                 placeholder="..."
-                onBlur={evento => {
-                    textoDigitado = evento.target.value;
-                    const resultadoPesquisa = livros.filter( livro => 
-                        livro.nome.includes(textoDigitado));
-                    setLivrosPesquisados(resultadoPesquisa);
-                }}
+                onBlur={evento => fazPesquisa(evento)}
             />
             
             {livrosPesquisados.map( livro =>
@@ -71,7 +75,6 @@ function Pesquisa(){
                 </Resultado>
             )}
         </PesquisaContainer>
-        
     )
 }
 
@@ -92,21 +95,29 @@ onBlur={evento => setTextoDigitado(evento.target.value)} - DEFINE A VARIÁVEL te
 SENDO O QUE TIVER SIDO DIGITADO NO CAMPO DE PESQUISA (QUE É O evento.target.value PARA A FUNÇÃO
 onBlur)
 
-onBlur={evento => {
-                    textoDigitado = evento.target.value;
-                    const resultadoPesquisa = livros.filter( livro => 
-                        livro.nome.includes(textoDigitado));
-                    setLivrosPesquisados(resultadoPesquisa);
-                }}
-FILTRA PARA A CONSTANTE resultadoPesquisa, SOMENTE OS LIVROS CUJO NOME INCLUDA O QUE FOR PESQUISADO E DEPOIS DEFINE livrosPesquisados COM O MESMO VALOR DE resultadoPesquisa, OU SEJA, A LISTA COM LIVROS QUE CONTENHAM NO SEU NOME O QUE FOR PESQUISADO.
 
+//FUNÇÃO QUE FILTRA OS LIVROS PELO NOME DO CAMPO PESQUISA E 
+//DEFINE A VARIÁVEL resultadoPesquisa COM OS LIVROS CORRESPONDENTES
+//TUDO ISSO NO EVENTO DE onBlur
+function fazPesquisa(evento){
+    textoDigitado = evento.target.value;
+    const resultadoPesquisa = livros.filter( livro => livro.nome.includes(textoDigitado));
+    setLivrosPesquisados(resultadoPesquisa);
+}
+
+
+USO DA FUNÇÃO fazPesquisa
+onBlur={evento => fazPesquisa(evento)}
+
+
+PARA CADA LIVRO DA LISTA RESULTANTE, MOSTRAR SUA IMAGEM E SEU NOME AO LADO
 {livrosPesquisados.map( livro =>
                 <Resultado>
                     <img src = {livro.src} />
                      <p>{livro.nome}</p>
                 </Resultado>
             )}
-PARA CADA LIVRO DA LISTA RESULTANTE, MOSTRAR SUA IMAGEM E SEU NOME AO LADO
+
 
 
 
