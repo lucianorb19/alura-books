@@ -1,6 +1,7 @@
 import Input from '../Input';//USO DO STYLED COMPONENTE JÁ DEFINIDO EM OUTRO ARQUIVO
 import styled from 'styled-components';
 import { useState } from 'react'; //IMPORTAÇÃO PARA USO DE ESTADO
+import { livros } from './dadosPesquisa';//IMPORTAÇÃO DA LISTA DE OBJETOS livros
 
 const PesquisaContainer = styled.section`
     background-image: linear-gradient(90deg, #002f52 35%, #326589 165%);
@@ -25,15 +26,23 @@ const SubTitulo = styled.h3`
 `;
 
 function Pesquisa(){
-    const [textoDigitado, setTextoDigitado]= useState('');
-    
+    const [livrosPesquisados, setLivrosPesquisados]= useState([]);
+    var textoDigitado = '';
+
+    console.log(livrosPesquisados);
+
     return(
         <PesquisaContainer>
             <Titulo>Já sabe por onde começar?</Titulo>
             <SubTitulo>Encontre seu livro em nossa estante.</SubTitulo>
             <Input 
                 placeholder="..."
-                onBlur={evento => setTextoDigitado(evento.target.value)}
+                onBlur={evento => {
+                    textoDigitado = evento.target.value;
+                    const resultadoPesquisa = livros.filter( livro => 
+                        livro.nome.includes(textoDigitado));
+                    setLivrosPesquisados(resultadoPesquisa);
+                }}
             />
             <p>{textoDigitado}</p>
         </PesquisaContainer>
