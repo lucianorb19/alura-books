@@ -1,5 +1,6 @@
 import Header from './componentes/Header';
 import Pesquisa from './componentes/Pesquisa';
+import UltimosLancamentos from './componentes/UltimosLancamentos';
 import styled from 'styled-components';//IMPORTAÇÃO PACOTE
 
 //UTILIZAÇÃO DO styled PARA CRIAR O 'CSS' aplicável ao AppContainer, QUE
@@ -18,6 +19,7 @@ function App() {//FUNÇÃO JS QUE RETORNA UM HTML
     <AppContainer>
           <Header/>
           <Pesquisa />
+          <UltimosLancamentos />
     </AppContainer>
   );
 }
