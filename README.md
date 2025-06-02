@@ -1,4 +1,6 @@
 # Alura-Books
+---
+Projeto simples de aplicação do FrameWork React para criação de um Front-End que simula um site de venda de livros.
 
 ## DOWNLOADS NECESSÁRIOS
 Visual Studio Code - v.1.100.1
@@ -9,15 +11,15 @@ Pasta alura-books
 Abrir pelo terminal do VS Code
 npx create-react-app .
 
-npm start - roda a aplicação
+`npm start` - roda a aplicação
 No terminal é mostrado o endereço do localhost onde está sendo executado.
 
-CTRL+c - para a aplicação
+`CTRL+c` - para a aplicação
 
 
 ## ARQUIVOS DA ESTRUTURA BASE
-package.json - configurações básicas - nome do projeto, versão, dependências, ....
-src/ - códigos da aplicação(app.css, app.js)
+*package.json* - configurações básicas - nome do projeto, versão, dependências, ....  
+*src/* - códigos da aplicação(app.css, app.js)
 
 
 ## COMPONENTES NO REACT
@@ -30,7 +32,7 @@ Nesse arquivo pode ser aplicado um CSS único dele, e todo esse componente, já 
 ## STYLED COMPONENTS
 Pacote para estilização de componentes. Evitar o uso do CSS puro e adotar a utilização do pacote
 
-Instalação: no terminal vscode - npm install styled-components
+Instalação: no terminal vscode - `npm install styled-components`
 
 Exemplo: Trocar a estilização CSS da classe App.js
 Atualmente:
@@ -84,13 +86,12 @@ function App() {//FUNÇÃO JS QUE RETORNA UM HTML
 
 Agora não é mais necessário o arquivo CSS e o estilo aplicado ao componente <Header/> está no mesmo arquivo, tudo em JS.
 
-Isso é mesmo vantajoso? Pq não usar o CSS local? Qual a diferença?
-
-Parece ser utilizável apenas para situações onde o CSS do componente seja simples o bastante para ser utilizado somente pelo container direto no arquivo js.
+*Isso é mesmo vantajoso? Pq não usar o CSS local? Qual a diferença?*
+*Parece ser utilizável apenas para situações onde o CSS do componente seja simples o bastante para ser utilizado somente pelo container direto no arquivo js.*
 
 
 ## GLOBAL STYLE
-Uma maneira de definir algumas configurações de estilo únicas para todo o projeto. Em src/index.js
+Uma maneira de definir algumas configurações de estilo únicas para todo o projeto. Em *src/index.js*
 Importar pacote createGlobalStyle, do styled-compoments e definir dentro dele as configurações globais
 ```
 import { createGlobalStyle } from 'styled-components';
@@ -125,7 +126,7 @@ root.render(
 ```
 
 Excluir  o arquivo index.css (dado que suas definições estão no contêiner GlobalStyle).
-Agora, o estilo para tags body, code e li são globais no projeto.
+Agora, o estilo para tags body, code e li são globais no projeto.  
 *O li foi retirado da definição de container em App.js*
 
 Aplicação de Styled Components para todos os componentes. Em componentes/
